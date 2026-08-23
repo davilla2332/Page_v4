@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#6f2742">
+  <meta name="description" content="La historia de David y Madeline, guardada en recuerdos.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/heart.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <title>David & Madeline · Nuestra historia</title>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Principal">
+    <a class="brand" href="./">David <span>♥</span> Madeline</a>
+    <div class="nav-links">
+      <a href="#historia">Historia</a>
+      <a href="./album.html">Álbum</a>
+      <a href="./together.html">Rincón</a>
+      <a href="#capitulos">Capítulos</a>
+      <a href="#futuro">Futuro</a>
+      <a href="./admin.html" data-admin-only hidden>Editar</a>
+      <button id="musicToggle" type="button">♫ Música</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" id="heroEyebrow">Nuestra historia</span>
+        <h1 id="heroTitle">David <em>&</em> Madeline</h1>
+        <p id="heroSubtitle"></p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#propuesta">Ir a nuestra promesa ♥</a>
+          <a class="ghost-btn" href="./album.html">Abrir álbum completo</a>
+          <button id="installBtn" data-install-app hidden class="ghost-btn" type="button">Instalar app</button>
+        </div>
+      </div>
+      <div class="collage" aria-label="Collage decorativo de recuerdos">
+        <div class="polaroid one"><span class="tape"></span></div>
+        <div class="polaroid two"><span class="tape"></span></div>
+        <div class="polaroid three"><span class="tape"></span></div>
+        <div class="floating-note">“Qué bonito que el destino nos haya hecho coincidir.”</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="propuesta">
+    <div class="wrap">
+      <div class="proposal-box">
+        <div id="proposalBadge" class="proposal-badge" hidden></div>
+        <h2 id="proposalQuestion">¿Quieres seguir escribiendo esta historia conmigo?</h2>
+        <p>Esta respuesta se guarda en Supabase. Si dices que sí, la promesa queda registrada y nuestra carta se desbloquea para volver a verla cuando quieras.</p>
+        <div class="proposal-actions" id="proposalActions">
+          <button id="yesBtn" class="primary-btn yes" type="button">Sí, quiero ❤️</button>
+          <button id="noBtn" class="ghost-btn no" type="button">No 😶</button>
+          <button id="viewLetterBtn" class="ghost-btn" type="button" hidden>Ver nuestra carta 💌</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="historia">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Nuestro comienzo</span><h2 id="historyTitle">Dos fechas que cambiaron el rumbo</h2></div><p>La página calcula el tiempo automáticamente y los nuevos recuerdos alimentan estadísticas, calendario y “un día como hoy”.</p></div>
+      <div class="dates-grid">
+        <article class="date-card"><span>💬</span><strong id="talkDate"></strong><h3>Empezamos a hablar</h3><p>Ese primer hilo de conversación que terminó convirtiéndose en una historia que todavía no deja de crecer.</p></article>
+        <article class="date-card"><span>✨</span><strong id="meetDate"></strong><h3>Nos conocimos</h3><p>El momento en que una conversación dejó de vivir solo en una pantalla y se volvió un recuerdo de verdad.</p></article>
+      </div>
+      <div class="live-counter"><span id="liveCounter">Calculando…</span></div>
+      <div id="todayMemory" class="today-memory"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Nuestro “wrapped”</span><h2>Lo que ya hemos construido</h2></div><p>Estas cifras se actualizan con lo que guardes en Supabase.</p></div>
+      <div class="stats-grid">
+        <div class="stat"><strong id="daysTalking">0</strong><small>días desde el primer hola</small></div>
+        <div class="stat"><strong id="daysSinceMeet">0</strong><small>días desde que nos conocimos</small></div>
+        <div class="stat"><strong id="statMemories">0</strong><small>recuerdos guardados</small></div>
+        <div class="stat"><strong id="statChapters">0</strong><small>capítulos escritos</small></div>
+      </div>
+      <div class="stats-grid" style="margin-top:18px"><div class="stat"><strong id="statPlans">0</strong><small>planes cumplidos</small></div></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="recuerdos">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Fotos · videos · audios</span><h2 id="galleryTitle">Nuestro archivo de momentos</h2></div><div><a class="primary-btn" href="./album.html">Ver álbum completo →</a></div></div>
+      <div id="featuredMemories" class="memory-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="capitulos">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Nuestra historia</span><h2 id="chaptersTitle">Capítulos que todavía siguen creciendo</h2></div><p>Los capítulos pueden editarse, eliminarse, restaurarse y escribirse con ayuda de IA desde el panel.</p></div>
+      <div id="chaptersGrid" class="chapters-grid"></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Pequeños refugios</span><h2>Cuando necesites volver aquí</h2></div></div>
+      <div id="openWhenGrid" class="open-grid"></div>
+      <div class="love-tools" style="margin-top:18px">
+        <article class="jar-box"><h3>🫙 Frasquito de amor</h3><p>Un mensaje distinto cada vez.</p><button id="jarBtn" class="soft-btn" type="button">Sacar un mensaje</button><div id="jarMessage" class="result-bubble" hidden></div></article>
+        <article class="roulette-box"><h3>🎡 Ruleta de citas</h3><p>Para esos días en que queremos salir pero no sabemos qué hacer.</p><button id="dateRouletteBtn" class="soft-btn" type="button">Elegir plan</button><div id="dateIdea" class="result-bubble" hidden></div></article>
+        <article class="daily-question"><h3>💭 Pregunta para nosotros</h3><p id="dailyQuestionText">¿Qué pequeño momento conmigo recuerdas con más cariño?</p><button id="dailyQuestionBtn" class="soft-btn" type="button">Otra pregunta</button></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Porque sí</span><h2>Una razón más para elegirte</h2></div></div>
+      <div class="jar-box"><p id="reasonText" style="font-family:var(--serif);font-size:1.7rem"></p><div class="hero-actions"><button id="reasonBtn" class="primary-btn" type="button">Dime otra razón</button><button id="aiReasonBtn" class="ghost-btn" type="button">✨ Crear una con IA</button></div></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="futuro">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Nuestra lista</span><h2 id="plansTitle">Lo que todavía nos falta vivir</h2></div></div>
+      <div id="countdowns" class="countdowns"></div>
+      <div class="plans-wrap">
+        <div><div id="plansProgress" class="progress-orbit"><span id="plansProgressText"></span></div></div>
+        <ul id="plansList" class="plans-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">No abrir todavía</span><h2 id="capsulesTitle">Mensajes para nuestro futuro</h2></div><p>Las cápsulas se desbloquean automáticamente al llegar la fecha que hayas elegido.</p></div>
+      <div id="capsulesGrid" class="capsules-grid"></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Fechas especiales</span><h2>Nuestro calendario</h2></div></div>
+      <div id="calendarList" class="calendar-list"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Lugares que ya significan algo</span><h2>Mapa de nuestra historia</h2></div><p>Agrega latitud y longitud a un recuerdo y aparecerá aquí sin necesitar otra API key.</p></div>
+      <div id="storyMap" class="map-shell"></div><div id="mapEmpty" class="map-empty" hidden>Agrega coordenadas a tus recuerdos para empezar a llenar el mapa. 🗺️</div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Nosotros</span><h2>Dos personas, una colección de recuerdos</h2></div></div>
+      <div id="profiles" class="profiles"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Desbloqueado</span><h2>Logros de pareja</h2></div></div>
+      <div id="achievements" class="achievements-grid"></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap"><div class="jar-box" style="text-align:center"><span class="eyebrow">Una carta que siempre vuelve a casa</span><h2 style="font-family:var(--serif);font-size:2.6rem">Nuestra carta seguirá aquí</h2><p>Después del “sí”, puedes volver a abrirla desde esta misma página todas las veces que quieras.</p><div class="hero-actions" style="justify-content:center"><button id="viewLetterBtnBottom" class="primary-btn" type="button" hidden onclick="document.getElementById('viewLetterBtn').click()">Abrir carta 💌</button><button id="aiLetterBtn" class="ghost-btn" data-admin-only hidden type="button">✨ Crear otra versión con IA</button></div></div></div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap"><p id="footerText">Hecho con amor ❤️</p><p><a href="./album.html">Álbum completo</a> · <a href="./admin.html">Panel privado</a></p></div></footer>
+
+<div id="letterOverlay" class="letter-overlay" hidden>
+  <article class="letter-paper"><button id="letterClose" class="close-x" type="button" aria-label="Cerrar">×</button><span class="eyebrow">Para guardar y volver a leer</span><h2 id="letterTitle"></h2><p id="letterBody"></p><p style="text-align:right"><em>Con amor, siempre. ❤️</em></p></article>
+</div>
+
+<dialog id="miniModal"><div class="dialog-body"><h3 id="miniModalTitle"></h3><p id="miniModalBody" style="line-height:1.8"></p><form method="dialog"><button class="primary-btn">Cerrar</button></form></div></dialog>
+<audio id="bgMusic" loop preload="none"></audio>
+<div id="toastHost" class="toast-host"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script type="module" src="./js/home.js"></script>
+<script type="module" src="./js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "David & Madeline · Nuestra historia",
+  "short_name": "D ♥ M",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff9f6",
+  "theme_color": "#6f2742",
+  "description": "Nuestro álbum, cartas, capítulos y recuerdos.",
+  "icons": [
+    {"src":"./assets/icons/heart.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

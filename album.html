@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#6f2742">
+  <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icons/heart.svg" type="image/svg+xml"><link rel="stylesheet" href="./css/styles.css">
+  <title>Álbum completo · David & Madeline</title>
+</head>
+<body>
+<header class="site-header"><nav class="nav wrap"><a class="brand" href="./">David <span>♥</span> Madeline</a><div class="nav-links"><a href="./">Inicio</a><a href="./together.html">Rincón</a><a href="./admin.html" data-admin-only hidden>Editar</a><button id="slideshowBtn" type="button">▶ Presentación</button></div></nav></header>
+<main class="wrap">
+  <section class="album-hero"><span class="eyebrow">Todo lo que no queremos olvidar</span><h1>Nuestro álbum completo</h1><p>Fotos, videos, audios, lugares y pequeñas historias. Busca por palabra, año, etiqueta o favoritos.</p></section>
+  <section class="album-toolbar" aria-label="Filtros"><input id="searchInput" type="search" placeholder="Buscar recuerdos…"><select id="yearFilter"></select><select id="tagFilter"></select><label><input id="favoriteOnly" type="checkbox"> Solo favoritos</label></section>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px"><strong id="albumCount">0 recuerdos</strong><a class="primary-btn" href="./admin.html" data-admin-only hidden>+ Agregar recuerdo</a></div>
+  <section id="albumGrid" class="album-grid"></section>
+</main>
+<dialog id="viewer" class="viewer">
+  <div class="viewer-grid"><div id="viewerMedia" class="viewer-media"></div><div class="viewer-copy"><form method="dialog" style="float:right"><button class="close-x" type="submit">×</button></form><small id="viewerDate"></small><h2 id="viewerTitle"></h2><p id="viewerDescription" style="line-height:1.7"></p><p id="viewerPlace"></p><div id="viewerTags" class="tag-list"></div><div class="hero-actions"><button id="viewerFavorite" class="ghost-btn" type="button">♡ Favorito</button><button id="viewerShare" class="ghost-btn" type="button">Compartir enlace</button><button id="viewerQr" class="ghost-btn" type="button">QR</button><button id="viewerEdit" class="ghost-btn" type="button" hidden>Editar</button></div><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><h3>Reacciones</h3><div id="reactionBar" class="reaction-bar"></div><h3>Comentarios</h3><div id="commentsList" class="comments-list"></div><form id="commentForm" class="comment-form" hidden><input id="commentName" placeholder="Tu nombre"><textarea id="commentBody" rows="3" placeholder="Escribe algo para este recuerdo…"></textarea><button class="primary-btn" type="submit">Comentar</button></form></div></div>
+</dialog>
+<dialog id="qrDialog"><div class="dialog-body" style="text-align:center"><h3>QR de este recuerdo</h3><img id="qrImage" alt="Código QR" style="width:min(280px,80vw);border-radius:14px"><p>Escanéalo para abrir directamente este recuerdo.</p><form method="dialog"><button class="primary-btn">Cerrar</button></form></div></dialog>
+<dialog id="slideshow" class="slideshow"><div class="slide-wrap"><form method="dialog" style="justify-self:end"><button class="close-x" type="submit">×</button></form><img id="slideImage" alt="Recuerdo en presentación"><h3 id="slideTitle"></h3><p id="slideCaption"></p></div></dialog>
+<div id="toastHost" class="toast-host"></div>
+<script type="module" src="./js/album.js"></script><script type="module" src="./js/pwa.js"></script>
+</body></html>

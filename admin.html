@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#6f2742">
+  <link rel="icon" href="./assets/icons/heart.svg" type="image/svg+xml"><link rel="stylesheet" href="./css/styles.css">
+  <title>Panel privado · David & Madeline</title>
+</head>
+<body class="admin-shell">
+<section id="loginView" class="login-view" hidden>
+  <div class="login-card"><span class="eyebrow">Solo nosotros</span><h1>Panel privado ❤️</h1><p>Usa una cuenta de correo creada manualmente en Supabase Authentication. El sitio público no incluye registro.</p><form id="loginForm"><label>Correo<input id="loginEmail" type="email" autocomplete="username" required></label><label>Contraseña<input id="loginPassword" type="password" autocomplete="current-password" required></label><button id="loginSubmit" class="primary-btn">Entrar</button><a class="ghost-btn" href="./" style="text-align:center;text-decoration:none">Volver a la página</a></form></div>
+</section>
+
+<section id="dashboardView" class="admin-layout" hidden>
+  <aside class="admin-side"><a class="brand" href="./" style="color:white">D <span>♥</span> M</a><h2>Editar nuestra historia</h2><small id="adminIdentity"></small><nav class="admin-nav"><button class="active" data-tab="content">Textos</button><button data-tab="memories">Recuerdos</button><button data-tab="story">Historia y futuro</button><button data-tab="advanced">Avanzado</button><button data-tab="tools">Herramientas</button><a href="./album.html" style="color:#fff;padding:12px;text-decoration:none">Ver álbum ↗</a></nav></aside>
+  <main class="admin-main">
+    <div class="admin-top"><div><span class="eyebrow">Modo edición</span><strong>Los cambios se guardan en Supabase</strong></div><button id="logoutBtn" class="ghost-btn" type="button">Cerrar sesión</button></div>
+
+    <section class="admin-tab" data-tab="content">
+      <h1>Editar textos de la página</h1>
+      <form id="contentForm">
+        <div class="admin-card"><h3>Datos de la pareja</h3><div class="form-grid"><label><span>Nombre 1</span><input id="coupleDavid"></label><label><span>Nombre 2</span><input id="coupleMadeline"></label><label><span>Empezamos a hablar</span><input id="coupleTalk" type="date"></label><label><span>Nos conocimos</span><input id="coupleMeet" type="date"></label></div></div>
+        <div class="admin-card"><h3>Portada y propuesta</h3><div class="form-grid"><label><span>Etiqueta superior</span><input id="heroEyebrowInput"></label><label><span>Título</span><input id="heroTitleInput"></label><label class="full"><span>Texto principal</span><textarea id="heroSubtitleInput" rows="4"></textarea></label><label class="full"><span>Pregunta de la propuesta</span><input id="heroQuestionInput"></label></div></div>
+        <div class="admin-card"><h3>Nuestra carta</h3><div class="form-grid"><label class="full"><span>Título</span><input id="letterTitleInput"></label><label class="full"><span>Contenido</span><textarea id="letterBodyInput" rows="10"></textarea></label></div><div class="form-actions"><button id="aiLetterAdmin" class="ghost-btn" type="button">✨ Reescribir con IA</button></div></div>
+        <div class="two-col-admin"><div class="admin-card"><h3>Razones</h3><p>Una por línea.</p><textarea id="reasonsInput" rows="9"></textarea></div><div class="admin-card"><h3>Frasquito</h3><p>Un mensaje por línea.</p><textarea id="jarInput" rows="9"></textarea></div></div>
+        <div class="admin-card"><h3>“Abrir cuando…”</h3><p>Formato JSON: una lista de objetos con <code>title</code> y <code>body</code>.</p><textarea id="openWhenInput" class="advanced-json" rows="10"></textarea></div>
+        <div class="two-col-admin"><div class="admin-card"><h3>Ideas de citas</h3><textarea id="dateIdeasInput" rows="8"></textarea></div><div class="admin-card"><h3>Preguntas para pareja</h3><textarea id="questionsInput" rows="8"></textarea></div></div>
+        <button class="primary-btn" type="submit">Guardar todos los textos</button>
+      </form>
+    </section>
+
+    <section class="admin-tab" data-tab="memories" hidden>
+      <h1>Álbum y recuerdos</h1>
+      <div class="two-col-admin">
+        <form id="memoryForm" class="admin-card">
+          <h3>Agregar / editar recuerdo</h3>
+          <div class="form-grid"><label class="full"><span>Foto, video o audio</span><input id="memoryFile" type="file" accept="image/*,video/*,audio/*"></label><div id="memoryPreview" class="memory-preview full"></div><label><span>Título</span><input id="memoryTitle" required></label><label><span>Fecha</span><input id="memoryDate" type="date"></label><label class="full"><span>Dedicatoria / historia</span><textarea id="memoryDescription" rows="5"></textarea></label><label><span>Lugar</span><input id="memoryPlace" placeholder="Ej. Panamá Oeste"></label><label><span>Etiquetas</span><input id="memoryTags" placeholder="primera cita, selfie, viaje"></label><label><span>Latitud</span><input id="memoryLat" type="number" step="any" placeholder="8.9824"></label><label><span>Longitud</span><input id="memoryLng" type="number" step="any" placeholder="-79.5199"></label><label><span>Visibilidad</span><select id="memoryVisibility"><option value="public">Público</option><option value="private">Privado</option></select></label><label><span>Capítulo relacionado</span><select id="memoryChapter"><option value="">Sin capítulo</option></select></label><label class="check"><input id="memoryFavorite" type="checkbox"><span>Favorito</span></label><label class="check"><input id="memoryFeatured" type="checkbox"><span>Destacar en portada</span></label></div>
+          <div class="form-actions"><button id="aiMemoryCaption" class="ghost-btn" type="button">✨ Dedicatoria con IA</button><button id="memorySubmit" class="primary-btn" type="submit">Guardar recuerdo</button><button id="memoryReset" class="ghost-btn" type="button">Limpiar</button></div>
+        </form>
+        <div class="admin-card"><h3>Cómo usarlo</h3><p>Las fotos y videos públicos se guardan en <code>couple-public</code>. Los recuerdos privados van a <code>couple-private</code> y solo se muestran con una cuenta permanente.</p><p>Si agregas latitud y longitud, el recuerdo aparece automáticamente en el mapa de la portada.</p><p>Usa “Destacar” para elegir qué recuerdos aparecen primero en la página de inicio.</p></div>
+      </div>
+      <div class="admin-card"><h3>Todos los recuerdos y papelera</h3><div id="memoryList" class="admin-list"></div></div>
+    </section>
+
+    <section class="admin-tab" data-tab="story" hidden>
+      <h1>Historia, planes y futuro</h1>
+      <div id="genericForms"></div>
+      <div id="genericLists"></div>
+    </section>
+
+    <section class="admin-tab" data-tab="advanced" hidden>
+      <h1>Editor avanzado</h1>
+      <div class="admin-card"><p>Aquí puedes modificar cualquier bloque de <code>site_content</code>. Si no estás seguro, usa primero el editor visual de “Textos”.</p><textarea id="advancedJson" class="advanced-json"></textarea><div class="form-actions"><button id="saveAdvancedJson" class="primary-btn" type="button">Guardar JSON</button></div></div>
+    </section>
+
+    <section class="admin-tab" data-tab="tools" hidden>
+      <h1>Herramientas</h1>
+      <div class="two-col-admin"><div class="admin-card"><h3>📦 Copia de seguridad</h3><p>Descarga textos, capítulos, recuerdos, planes, comentarios, preguntas y demás metadatos en un archivo JSON.</p><button id="backupBtn" class="primary-btn" type="button">Descargar backup</button></div><div class="admin-card"><h3>📖 Nuestro libro PDF</h3><p>Genera un libro con la carta, capítulos y hasta 24 recuerdos públicos.</p><button id="bookBtn" class="primary-btn" type="button">Crear libro PDF</button></div></div>
+      <div class="admin-card"><h3>🩺 Diagnóstico</h3><p>Comprueba Supabase, Auth, Storage y la Edge Function sin exponer tus claves.</p><a class="primary-btn" href="./diagnostics.html" style="display:inline-block;text-decoration:none">Abrir diagnóstico</a></div><div class="admin-card"><h3>✨ IA romántica</h3><p>La IA se activa al desplegar la Edge Function <code>romantic-ai</code> y guardar <code>OPENAI_API_KEY</code> como secreto en Supabase. La clave nunca va en GitHub.</p></div><div class="admin-card"><h3>🕘 Historial de cambios</h3><p>Supabase registra automáticamente las últimas modificaciones importantes.</p><div id="changeLog" class="admin-list"></div></div>
+    </section>
+  </main>
+</section>
+<div id="toastHost" class="toast-host"></div>
+<script type="module" src="./js/admin.js"></script>
+</body></html>
