@@ -1,30 +1,28 @@
-DAVID & MADELINE · V4
-====================
+DAVID & MADELINE ❤️ — EMPEZAR AQUÍ
 
-EMPIEZA AQUI:
+1) CREA SUPABASE
+- Crea un proyecto nuevo.
+- Ve a SQL Editor.
+- Ejecuta completo: supabase/setup.sql
+- Activa Authentication → Anonymous Sign-Ins.
+- Crea manualmente las cuentas de David y Madeline en Authentication → Users.
 
-1) Crea un proyecto NUEVO en Supabase.
-2) Supabase > SQL Editor > pega y ejecuta TODO: supabase/setup.sql
-3) Habilita Anonymous Sign-Ins en Supabase Authentication.
-4) Crea manualmente 1 o 2 usuarios permanentes (David/Madeline) en Authentication > Users.
-5) Abre js/config.js y pega SOLO:
-   - Project URL
-   - Publishable key (o anon key legacy)
-6) Sube toda esta carpeta a la raiz de un repositorio GitHub.
-7) GitHub > Settings > Pages > Deploy from a branch > main / root.
+2) CONECTA LA WEB
+- Abre js/config.js.
+- Pega tu Supabase URL.
+- Pega tu Publishable key o anon key pública.
+- No uses service_role ni secret keys.
 
-CON ESO FUNCIONA EL NUCLEO COMPLETO.
+3) SUBE A GITHUB
+- Sube toda la carpeta al repositorio.
+- Settings → Pages → Deploy from a branch → main / root.
 
-IA (OPCIONAL PERO YA INTEGRADA):
-- Crea/despliega la Edge Function romantic-ai usando supabase/functions/romantic-ai/index.ts
-- En Supabase Edge Function Secrets agrega OPENAI_API_KEY
-- Opcional: OPENAI_MODEL = gpt-5-mini
-- NO pongas la API key de OpenAI en GitHub ni en js/config.js.
+4) ADMINISTRA TODO
+- Abre admin.html.
+- Inicia sesión con una de las cuentas permanentes.
+- Desde ahí puedes editar textos, carta, recuerdos, capítulos, planes, cápsulas, eventos, perfiles, playlist y preguntas.
 
-IMPORTANTE SOBRE EL “SI”:
-- Al pulsar “Sí”, Supabase guarda una marca GLOBAL con fecha/hora.
-- La primera fecha de aceptación no se reemplaza.
-- La carta queda desbloqueada y vuelve a aparecer en visitas futuras.
-- Como la propuesta es pública, cualquier persona con el enlace podría pulsar “Sí”. Comparte el enlace solo con Madeline hasta que ella responda.
+5) PRUEBA
+- Abre diagnostics.html para verificar Supabase, Auth, tablas y Storage.
 
-Lee README.md para la guía completa.
+Importante: el primer “Sí” de la propuesta se guarda en Supabase y se conserva permanentemente.

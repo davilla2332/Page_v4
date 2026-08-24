@@ -1,5 +1,1 @@
-David & Madeline Romantic App
-Version: 4.0 Complete / From Scratch
-Build date: 2026-08-22
-Core credentials required: Supabase Project URL + Publishable/anon key
-Optional AI secret: OPENAI_API_KEY in Supabase Edge Function Secrets
+V4.1 SIN IA - corrección de interacción y tolerancia a errores de Supabase
